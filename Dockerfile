@@ -10,3 +10,5 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y libmemcached-dev \
     && pecl install memcached \
 && docker-php-ext-enable memcached 
+RUN pecl install apcu-4.0.11 \
+    && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
