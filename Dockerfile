@@ -12,8 +12,10 @@ RUN apt-get update && apt-get install -y libmemcached-dev \
 && docker-php-ext-enable memcached 
 RUN pecl install apcu-4.0.11 \
     && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
-RUN docker-php-ext-install \
-        pdo_mysql
+RUN docker-php-ext-install pdo_mysql
+    && docker-php-ext-install mysql \
+    && docker-php-ext-install mysqli 
+
 RUN apt-get update && \
   apt-get install -y ssmtp && \
   apt-get clean && \
